@@ -36,7 +36,6 @@ body {
 nav {
   font-size: 0.875rem;
   color: var(--color-light-gray);
-  text-transform: uppercase;
   letter-spacing: 1px;
 }
 
@@ -66,7 +65,7 @@ h6 {
 }
 
 a {
-  color: skyblue;
+  color: inherit;
   text-decoration: none;
 }
 

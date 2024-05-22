@@ -1,7 +1,6 @@
 p#breadcrumbs {
   font-size: 14px;
   color: var(--color-light-gray);
-  text-transform: uppercase;
   letter-spacing: 1px;
   margin-top: 40px;
 }
