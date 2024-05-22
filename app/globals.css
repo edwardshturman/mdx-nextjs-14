@@ -2,12 +2,13 @@
   --font-sans: var(--font-geist), sans-serif;
   --font-mono: var(--font-geist-mono), ui-monospace, monospace;
 
-  --color-white:                   hsl(0deg, 0%, 100%);
-  --color-black:                   hsl(0deg, 0%, 0%);
-  --color-dark-gray:               hsl(0deg, 0%, 40%);
-  --color-light-gray:              hsl(0deg, 0%, 60%);
-  --color-diff-add-translucent:    hsla(120deg, 100%, 25%, 0.2);
-  --color-diff-remove-translucent: hsla(0deg, 100%, 50%, 0.2);
+  --color-white:       hsl(0deg, 0%, 100%);
+  --color-black:       hsl(0deg, 0%, 0%);
+  --color-dark-gray:   hsl(0deg, 0%, 40%);
+  --color-light-gray:  hsl(0deg, 0%, 60%);
+  --color-highlight:   hsla(200deg, 100%, 50%, 0.2);
+  --color-diff-add:    hsla(120deg, 100%, 25%, 0.2);
+  --color-diff-remove: hsla(0deg, 100%, 50%, 0.2);
 
   color: var(--color-white);
   background-color: var(--color-black);
@@ -97,4 +98,65 @@ ul > li::before {
 
 ul ul > li {
   margin-left: 1em;
+}
+
+code {
+  font-family: var(--font-mono);
+  counter-reset: line;
+}
+
+:not(pre) > code {
+  box-shadow: 0 0 0 1px var(--color-dark-gray);
+  padding: 0.1em 0.4em;
+  border-radius: 0.4em;
+}
+
+pre {
+  overflow-x: auto;
+  padding: 1rem 0;
+  font-size: 0.8em;
+}
+
+pre [data-line] {
+  padding: 0 1rem;
+}
+
+pre > code[data-line-numbers] > [data-line]::before {
+  content: counter(line);
+  counter-increment: line;
+  display: inline-block;
+  width: 2em;
+  margin-right: 2em;
+  text-align: right;
+  color: var(--color-dark-gray);
+  user-select: none;
+  font-variant-numeric: tabular-nums;
+}
+
+pre > code[data-line-numbers] > [data-line]:hover::before {
+  color: var(--color-light-gray);
+}
+
+pre
+  > code[data-line-numbers][data-line-numbers-max-digits='2']
+  > [data-line]::before {
+  width: 2em;
+}
+
+pre
+  > code[data-line-numbers][data-line-numbers-max-digits='3']
+  > [data-line]::before {
+  width: 3em;
+}
+
+span[data-highlighted-line] {
+  background-color: var(--color-highlight);
+}
+
+span[data-highlighted-line-id='add'] {
+  background-color: var(--color-diff-add);
+}
+
+span[data-highlighted-line-id='remove'] {
+  background-color: var(--color-diff-remove);
 }

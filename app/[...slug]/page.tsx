@@ -1,23 +1,16 @@
-import Link from 'next/link'
 import path from 'node:path'
 import fs from 'node:fs/promises'
 import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import { compileMDX } from 'next-mdx-remote/rsc'
 
-// import rehypeSlug from 'rehype-slug'
-// import rehypePrettyCode from 'rehype-pretty-code'
-// import type { Options } from 'rehype-pretty-code'
+import rehypeSlug from 'rehype-slug'
+import rehypePrettyCode from 'rehype-pretty-code'
 
 async function readPage(slug: string[]) {
   try {
     const filePath = path.join(process.cwd(), 'app', ...slug) + '.md'
     const page = await fs.readFile(filePath, 'utf8')
-
-    // const vercelTheme = await import('@/app/vercel-theme.json')
-    // const rehypePrettyCodeOptions: Options = {
-    //   theme: vercelTheme as any
-    // }
 
     type Frontmatter = {
       title: string
@@ -33,9 +26,8 @@ async function readPage(slug: string[]) {
         parseFrontmatter: true,
         mdxOptions: {
           rehypePlugins: [
-            // [rehypePrettyCode as any, rehypePrettyCodeOptions],
-            // rehypeSlug,
-            // rehypeKatex as any,
+            [rehypePrettyCode as any],
+            rehypeSlug
           ]
         }
       }
@@ -110,7 +102,7 @@ export default async function Page(
   { params }:
   { params: { slug: string[] } }
 ) {
-  const { content, frontmatter } = await readPage(params.slug)
+  const { content } = await readPage(params.slug)
 
   return (
     <>

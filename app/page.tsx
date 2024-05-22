@@ -12,12 +12,6 @@ export default function Home() {
           <li>
             <Link href={"/hello-world"}>Hello World</Link>
           </li>
-          <li>
-            <Link href={"/features"}>Features</Link>
-          </li>
-          <li>
-            <Link href={"/next-steps"}>Next Steps</Link>
-          </li>
         </ul>
       </nav>
     </>
