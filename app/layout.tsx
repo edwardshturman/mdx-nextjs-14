@@ -1,6 +1,7 @@
-import Image from 'next/image'
 import type { Metadata } from 'next'
 import localFont from 'next/font/local'
+
+import { Breadcrumbs } from '@/components/Breadcrumbs'
 
 import './globals.css'
 
@@ -35,6 +36,7 @@ export default function RootLayout({
       className={`${Geist.variable} ${GeistMono.variable}`}
     >
       <body>
+        <Breadcrumbs />
         {children}
       </body>
     </html>
