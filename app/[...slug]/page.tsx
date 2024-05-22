@@ -22,7 +22,6 @@ async function readPage(slug: string[]) {
     type Frontmatter = {
       title: string
       description: string
-      published: boolean
       og_image?: string
     }
 
