@@ -9,10 +9,6 @@ export async function GET(request: Request) {
     ? searchParams.get('title')
     : 'MDX on Next.js 14'
 
-  const imageData = await fetch(
-    new URL('../../../public/og-background.png', import.meta.url))
-    .then((res) => res.arrayBuffer())
-
   const GeistRegular = await fetch(
     new URL('../../../public/fonts/Geist-Regular.otf', import.meta.url))
     .then((res) => res.arrayBuffer())
