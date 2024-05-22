@@ -16,8 +16,8 @@ const GeistMono = localFont({
 })
 
 let metadataBase: URL
-metadataBase = new URL(`http://localhost:${process.env.PORT || 3000}`)
-if (process.env.VERCEL_URL) metadataBase = new URL(`https://${process.env.VERCEL_URL}`)
+if (process.env.VERCEL_URL) metadataBase = new URL('https://mdx-next-14.vercel.app')
+else metadataBase = new URL(`http://localhost:${process.env.PORT || 3000}`)
 
 export const metadata: Metadata = {
   metadataBase,
